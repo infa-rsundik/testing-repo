@@ -1,6 +1,6 @@
-FROM ubuntu 
-MAINTAINER na@na.com
-RUN apt-get update 
-RUN apt-get install –y nginx 
-CMD [“echo”,”Image created”]
+FROM ubuntu:20.04
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends mysql-client \
+    && rm -rf /var/lib/apt/lists/*
+ENTRYPOINT ["mysql"]
 
